@@ -10,12 +10,21 @@ sources:
     title: PROVE leader discovery discussion
     author: human:prove-leader
     last_modified: 2026-07-26
-generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
+  - id: core-directive-2026-07-27
+    resource: /sources/coverage-core-directive-2026-07-27.md
+    title: PROVE leader Coverage core directive
+    author: human:prove-leader
+    last_modified: 2026-07-27
+generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
 ---
 
 # Mandate
 
-Establish the goals, knowledge, evaluation method, and technical foundation for an AI-native SSD verification platform.
+Establish a measurable SSD Verification Knowledge system that preserves expert intent and defect-detection capability while enabling AI-native Test Case generation, execution, and analysis.
+
+# Primary TF Problem
+
+The TF must define what constitutes the verification space and how Test Coverage is measured within it. There is no approved answer yet. Specific Coverage axes remain intentionally undefined until verification experts refine and approve them.
 
 # Initial Operating Window
 
@@ -58,8 +67,14 @@ Workstream ownership and documentation roles are not yet assigned.
 
 # Expected Outcomes
 
-- A defensible definition and measurement method for Test Case quality and Coverage
+- A defensible definition of the verification space and a measurement method for Test Case quality and Coverage
+- Independent evidence for Verification Intent preservation and defect-detection capability preservation
+- A reusable representation of knowledge embedded in existing Test Cases
 - An AI-native IceT direction and executable test contract
 - Agent workflow integration from knowledge input through execution and analysis
 - A reproducible failure-analysis loop
 - A durable Root Knowledge system shared by all PROVE subprojects
+
+# Technology Position
+
+IceT, SkyTower, implementation languages, models, and orchestration frameworks support the mandate but do not define it. They may change when a different design better serves the core goal.

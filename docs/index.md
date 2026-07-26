@@ -17,6 +17,7 @@ PROVE is an AI-based SSD verification platform intended to generate, execute, an
 
 ## Knowledge Areas
 
+- [PROVE Core Value](/principles/core-value.md)
 - [SSD Verification Principles](/principles/ssd-verification.md)
 - [AI Autonomy Principles](/principles/ai-autonomy.md)
 - [Traceability and Reproducibility](/principles/traceability.md)
@@ -38,4 +39,4 @@ PROVE is an AI-based SSD verification platform intended to generate, execute, an
 
 ## Current Trust State
 
-This bundle is an unverified draft generated from the [initial discovery record](/sources/discovery-interview-2026-07-26.md). A TF member must review each concept before its lifecycle state becomes `stable`.
+Most of this bundle remains an unverified draft generated from the [initial discovery record](/sources/discovery-interview-2026-07-26.md). The [PROVE Core Value](/principles/core-value.md) and [ADR-0002](/decisions/0002-coverage-centered-core.md) were explicitly confirmed by the PROVE leader on 2026-07-27. Other concepts require review before becoming `stable`.

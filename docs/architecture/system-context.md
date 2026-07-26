@@ -10,20 +10,26 @@ sources:
     title: PROVE leader discovery discussion
     author: human:prove-leader
     last_modified: 2026-07-26
-generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
+  - id: core-directive-2026-07-27
+    resource: /sources/coverage-core-directive-2026-07-27.md
+    title: PROVE leader Coverage core directive
+    author: human:prove-leader
+    last_modified: 2026-07-27
+generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
 ---
 
 # Context
 
 ```mermaid
 flowchart LR
-    Specs["NVMe / OCP / Customer / Internal Specs"] --> PROVE["PROVE Agent Workflow"]
-    RAG["Internal Spec RAG"] --> PROVE
-    Packages["Existing Test Packages"] --> PROVE
-    FW["SRS / FW Policy / Code"] --> PROVE
+    Specs["NVMe / OCP / Customer / Internal Specs"] --> Core["Verification Knowledge and Coverage Core"]
+    RAG["Internal Spec RAG"] --> Core
+    Packages["Existing Test Packages"] --> Core
+    FW["SRS / FW Policy / Code"] --> Core
 
-    PROVE --> IceT["IceT Test Platform"]
-    PROVE --> SkyTower["SkyTower Automation"]
+    Core --> PROVE["PROVE Agent Workflow"]
+    PROVE --> IceT["IceT — Enabling Test Tool"]
+    PROVE --> SkyTower["SkyTower — Enabling Automation Tool"]
     IceT --> DUT["eSSD / cSSD DUT"]
     SkyTower --> IceT
 
@@ -37,6 +43,10 @@ flowchart LR
     Downstream --> PROVE
     PROVE --> Human["Verification Engineer Escalation"]
 ```
+
+# Architectural Priority
+
+The Verification Knowledge and Coverage core defines what the surrounding tools must support. IceT and SkyTower are replaceable adapters and execution capabilities; their current architecture must not define the limits of PROVE.
 
 # Inputs
 

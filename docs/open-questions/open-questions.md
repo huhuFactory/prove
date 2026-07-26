@@ -10,12 +10,22 @@ sources:
     title: PROVE leader discovery discussion
     author: human:prove-leader
     last_modified: 2026-07-26
-generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
+  - id: core-directive-2026-07-27
+    resource: /sources/coverage-core-directive-2026-07-27.md
+    title: PROVE leader Coverage core directive
+    author: human:prove-leader
+    last_modified: 2026-07-27
+generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
 ---
 
 # Product and Evaluation
 
+- How is the verification space representing 100% constructed and bounded?
 - What dimensions and computation define Test Case Coverage?
+- How is Verification Intent represented and extracted from legacy tests?
+- What evidence independently proves Intent preservation?
+- What evidence independently proves actual defect-detection preservation?
+- How is reusable engineering knowledge applied to a new specification?
 - What evidence demonstrates that an AI-generated Test Case is useful?
 - Which specification versions and fewer-than-ten features are selected first?
 - How are conflicting or extending requirements across specifications handled?
@@ -55,3 +65,5 @@ generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
 # Resolution Rule
 
 Every resolved question must link to an ADR or verified concept update. Do not delete historical questions without recording their resolution.
+
+Coverage-axis questions remain open by deliberate decision, not by omission.

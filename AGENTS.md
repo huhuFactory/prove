@@ -7,12 +7,21 @@ This repository is the canonical Root Knowledge Bundle for PROVE. It defines sha
 Before working, read:
 
 1. `docs/index.md`
-2. `docs/project/vision.md` and `docs/project/scope.md`
-3. `docs/glossary/glossary.md`
-4. Relevant principles, interfaces, and decisions
-5. `docs/open-questions/open-questions.md`
+2. `docs/principles/core-value.md`
+3. `docs/project/vision.md` and `docs/project/scope.md`
+4. `docs/glossary/glossary.md`
+5. Relevant principles, interfaces, and decisions
+6. `docs/open-questions/open-questions.md`
 
 Do not infer unresolved facts. Record them as open questions.
+
+## Non-Negotiable Project Rule
+
+PROVE's core is not a particular test generator, IceT, SkyTower, language, model, or agent framework. Its core is to preserve and expand SSD verification knowledge, generate broader and better tests, and provide measurable Coverage evidence.
+
+Coverage dimensions and the total verification space are intentionally undefined until the TF's verification experts approve them. Agents may propose and evaluate candidates, but must not present a candidate axis, score, or formula as the PROVE standard.
+
+Every proposal must explain how it advances the core. Tools may change when that better serves the goal.
 
 ## Knowledge Organization
 

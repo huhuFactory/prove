@@ -15,7 +15,12 @@ sources:
     title: Open Knowledge Format v0.2
     author: team:google-cloud
     last_modified: 2026-07-24
-generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
+  - id: core-directive-2026-07-27
+    resource: /sources/coverage-core-directive-2026-07-27.md
+    title: PROVE leader Coverage core directive
+    author: human:prove-leader
+    last_modified: 2026-07-27
+generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
 ---
 
 # Model
@@ -44,6 +49,8 @@ flowchart TD
 # Source-of-Truth Rule
 
 Root content must not be manually copied into subproject documentation. A subproject records the Root repository, release, and commit in `prove-knowledge.lock`. A fetched or generated cache is allowed, but it is not authoritative.
+
+Every subproject must load [PROVE Core Value](/principles/core-value.md) before project-local goals. A subproject charter must state how its work contributes to Verification Knowledge, broader or better tests, measurable Coverage, or evidence. Tool delivery alone is not sufficient alignment.
 
 # LLM Wiki Rule
 

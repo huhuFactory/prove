@@ -10,7 +10,12 @@ sources:
     title: PROVE leader discovery discussion
     author: human:prove-leader
     last_modified: 2026-07-26
-generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
+  - id: core-directive-2026-07-27
+    resource: /sources/coverage-core-directive-2026-07-27.md
+    title: PROVE leader Coverage core directive
+    author: human:prove-leader
+    last_modified: 2026-07-27
+generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
 ---
 
 # Workstreams
@@ -23,7 +28,9 @@ The first verification focus is HIL. FTL policy and security-feature verificatio
 
 ## Global Test Package Integration
 
-Extract intent and scenarios from more than 20,000 independently managed test cases, identify overlap and gaps, rewrite tests for the common platform, and produce a global package.
+Extract implicit Verification Intent and reusable engineering knowledge from more than 20,000 independently managed test cases, identify overlap and gaps, rewrite tests for the common platform, and produce a global package.
+
+The integrated package must be evaluated for both Intent preservation and actual defect-detection preservation. Test Case count or code similarity is not sufficient evidence.
 
 Independent owners may be different sites or different teams within one site. Ownership, approval, and migration policy remain undefined.
 
@@ -37,6 +44,9 @@ The initial focus is the common NVMe portion shared by eSSD and cSSD. The first 
 
 # Explicit Boundaries
 
+- PROVE's goal is measurable verification capability, not delivery of a specific tool.
+- Coverage axes are out of definition until verification experts approve them.
+- IceT, SkyTower, languages, models, and agent frameworks may change.
 - PROVE's device-failure decision is a PROVE disposition, not the final root-cause conclusion of the downstream development system.
 - PROVE must not be reduced to an NVMe compliance-only tool.
 - Detailed implementation of IceT, SkyTower, and other subprojects belongs in their respective repositories.

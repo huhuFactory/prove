@@ -1,7 +1,7 @@
 ---
 type: Metric Framework
 title: Test Quality and Coverage
-description: Current problem statement and hypotheses for evaluating AI-generated SSD tests.
+description: Authoritative problem statement and decision boundary for future Coverage definition.
 tags: [prove, coverage, quality, evaluation]
 status: draft
 sources:
@@ -10,63 +10,70 @@ sources:
     title: PROVE leader discovery discussion
     author: human:prove-leader
     last_modified: 2026-07-26
-generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
+  - id: core-directive-2026-07-27
+    resource: /sources/coverage-core-directive-2026-07-27.md
+    title: PROVE leader Coverage core directive
+    author: human:prove-leader
+    last_modified: 2026-07-27
+generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
 ---
 
 # Status
 
-Coverage is a central PROVE research and engineering problem. No authoritative Coverage definition or computation is approved yet.
+Coverage is the central PROVE research and engineering problem. No authoritative verification space, Coverage axis, aggregate score, or computation is approved.
 
-# Core Questions
+# Authoritative Position
 
-1. What is the finite or measurable verification space?
-2. Which dimensions represent meaningful SSD behavior?
-3. How is a Test Scenario mapped into that space?
-4. How are overlap, redundancy, gaps, and depth measured?
-5. How is semantic correctness separated from numerical Coverage?
-6. How does evidence prove that generated tests are useful?
+- A claim such as "100% Coverage" has no meaning until its verification space is defined.
+- Coverage is not inferred from Test Case count, code similarity, or generation success.
+- Global package equivalence requires separate evaluation of:
+  - Verification Intent preservation;
+  - actual defect-detection capability preservation.
+- Existing Test Cases are sources of implicit expert knowledge, not only code to translate.
+- Specific Coverage axes are intentionally deferred to PROVE verification experts.
 
-# Candidate Dimensions
+# Central Questions
 
-The following are hypotheses for TF evaluation, not accepted definitions:
+1. What constitutes the verification space?
+2. How are its boundaries made explicit and reviewable?
+3. How is implicit engineering intent extracted from existing Test Cases?
+4. How is Intent preservation distinguished from defect-detection preservation?
+5. How are loss, redundancy, and valid expansion demonstrated?
+6. What static and dynamic evidence makes a Coverage claim defensible?
+7. How is knowledge from legacy tests applied to a new specification?
 
-- Specification requirement coverage
-- Command and feature coverage
-- State and state-transition coverage
-- Parameter and boundary-value coverage
-- Error and negative-path coverage
-- Reset, power, and recovery coverage
-- Cross-feature interaction coverage
-- Environment and configuration coverage
-- Expected-result and assertion coverage
-- Historical failure coverage
-- Code coverage where source access and interpretation are meaningful
+# Deliberate Non-Definition
 
-# Test Quality Dimensions
+This document does not define Coverage axes. Candidate axes, weights, formulas, and composite scores must remain experimental until reviewed by the TF's verification experts and accepted through an ADR.
 
-Coverage alone is insufficient. Candidate quality evidence includes:
+# Comparison Model
 
-- Requirement fidelity
-- Scenario correctness
-- Executability
-- Determinism and reproducibility
-- Strength of expected results
-- Failure-detection ability
-- Traceability
-- Maintainability
-- Novelty versus existing tests
-- Expert correction effort
+Conceptually, PROVE must compare:
 
-# Required Evaluation Assets
+```text
+Legacy Test Package
+→ extracted Verification Intent and engineering knowledge
+→ comparison with generated Test Package
+→ preserved, lost, redundant, and newly added verification capability
+```
 
-- Versioned source requirements
-- Expert-authored scenarios and tests
-- Existing representative Test Cases
-- Known device and non-device failure examples
-- A reviewed mapping between requirements, scenarios, tests, and expected evidence
+Semantic comparison alone is insufficient for equivalence. The future evaluation method must consider both structured intent and execution-based defect-detection evidence. The exact evidence protocol is not yet approved.
 
-The size and availability of a representative failure dataset are open.
+# Knowledge Reuse
 
-# Governance
+PROVE must derive reusable Verification Knowledge from legacy Test Cases and engineering experience. That knowledge must inform Test Scenario generation for new specifications so generated tests are not limited to requirements explicitly written in the new document.
+
+# Required Foundation Work
+
+- Verification-expert workshops to define the space-construction method
+- A canonical representation for Verification Intent
+- Traceable extraction from existing Test Cases
+- Representative legacy and generated packages for comparison
+- Historical or controlled defect evidence where available
+- A method for recording uncertainty and unmatched knowledge
+
+The detailed axes, dataset size, and acceptance thresholds remain open.
+
+# Reporting Rule
 
 When a Coverage computation becomes authoritative, define it as an OKF `Attested Computation` with a deterministic executor, receipt, and attester. Until then, reported Coverage values must be labeled experimental.

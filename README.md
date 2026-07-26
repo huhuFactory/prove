@@ -6,10 +6,14 @@ Start with [docs/index.md](docs/index.md).
 
 ## Status
 
-The initial bundle was compiled from the PROVE leader's discovery discussion on 2026-07-26. All concepts remain drafts until reviewed by the TF.
+The initial bundle was compiled from the PROVE leader's discovery discussions beginning on 2026-07-26. Most concepts remain drafts until reviewed by the TF. The [PROVE Core Value](docs/principles/core-value.md) has been explicitly confirmed by the PROVE leader.
 
 ## Principles
 
+- Verification knowledge and measurable Coverage are the project core.
+- Existing verification intent and actual defect-detection capability must both be preserved and evaluated.
+- Coverage dimensions remain intentionally undefined until verification experts approve them.
+- IceT, SkyTower, languages, models, and agent frameworks are replaceable enabling tools.
 - Root stores shared purpose, language, principles, metrics, and contracts.
 - Subprojects store their own requirements, designs, decisions, and runbooks.
 - Unknowns remain explicit; agents must not silently fill gaps.

@@ -10,8 +10,24 @@ sources:
     title: PROVE leader discovery discussion
     author: human:prove-leader
     last_modified: 2026-07-26
-generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
+  - id: core-directive-2026-07-27
+    resource: /sources/coverage-core-directive-2026-07-27.md
+    title: PROVE leader Coverage core directive
+    author: human:prove-leader
+    last_modified: 2026-07-27
+generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
 ---
+
+# Core Alignment
+
+Every Agent must read [PROVE Core Value](/principles/core-value.md) before project-local knowledge. It must explain how a proposal contributes to Verification Knowledge, better or broader tests, measurable Coverage, or evidence.
+
+Agents must not:
+
+- Treat IceT, SkyTower, a language, a model, or an agent framework as the project goal.
+- Define a Coverage axis, formula, weight, or aggregate score as authoritative.
+- Claim package equivalence from Test Case count, code similarity, or semantic similarity alone.
+- Collapse Intent preservation and defect-detection preservation into one unexamined metric.
 
 # Grounding
 
