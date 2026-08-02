@@ -15,17 +15,24 @@ sources:
     title: PROVE leader Coverage core directive
     author: human:prove-leader
     last_modified: 2026-07-27
-generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
+  - id: discovery-2026-08-02
+    resource: /sources/discovery-2026-08-02.md
+    title: PROVE working discovery discussion
+    author: human:prove-leader
+    last_modified: 2026-08-02
+generated: { by: openai-codex/gpt-5, at: "2026-08-02T00:00:00+09:00" }
 ---
 
 # Context
 
 ```mermaid
 flowchart LR
+    Requester["Engineer / Team / Approved Upstream Requester"] --> Request["User Verification Request"]
+    Request --> Core
     Specs["NVMe / OCP / Customer / Internal Specs"] --> Core["Verification Knowledge and Coverage Core"]
     RAG["Internal Spec RAG"] --> Core
     Packages["Existing Test Packages"] --> Core
-    FW["SRS / FW Policy / Code"] --> Core
+    FLAIR["FLAIR FW Policy / Spec / Code Context"] --> Core
 
     Core --> PROVE["PROVE Agent Workflow"]
     PROVE --> IceT["IceT — Enabling Test Tool"]
@@ -39,8 +46,8 @@ flowchart LR
     Evidence --> PROVE
 
     PROVE --> Package["Validated Test Package"]
-    PROVE --> Downstream["Downstream Failure System"]
-    Downstream --> PROVE
+    PROVE --> BRAIN["BRAIN Failure Analysis"]
+    BRAIN --> PROVE
     PROVE --> Human["Verification Engineer Escalation"]
 ```
 
@@ -50,6 +57,7 @@ The Verification Knowledge and Coverage core defines what the surrounding tools 
 
 # Inputs
 
+- User or upstream-system Verification Request and execution constraints
 - Official NVMe specifications
 - OCP specifications
 - Customer specifications
@@ -72,4 +80,4 @@ The Verification Knowledge and Coverage core defines what the surrounding tools 
 
 # Unresolved Interfaces
 
-Detailed SkyTower structure, downstream failure-system API, Spec RAG mutation rights, and repository boundaries remain open.
+Detailed SkyTower structure, FLAIR and BRAIN contracts, Spec RAG mutation rights, and repository boundaries remain open.

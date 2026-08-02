@@ -27,9 +27,10 @@ Verification Knowledge and measurable Coverage are the core. Test generation, Ic
 | Capability | Responsibility | Candidate owning project |
 |---|---|---|
 | Knowledge ingestion | Access, parse, and version specifications, policies, SRS, code context, and existing tests | Scenario/knowledge project |
-| Verification knowledge extraction | Recover implicit Intent and reusable engineering knowledge from existing tests and failure experience | Knowledge/Coverage project |
+| Verification knowledge extraction | Recover Scenario Intent and reusable knowledge from existing Tests and Package Libraries using only the code paths needed to explain verification behavior | Knowledge/Coverage project |
 | Requirement modeling | Represent requirements, precedence, conditions, and evidence | Scenario extraction |
 | Scenario extraction | Produce traceable verification scenarios | Scenario extraction |
+| Artifact lifecycle and governance | Register every durable Input and Output with identity, Version, provenance, Review Record, downstream eligibility, promotion, Revocation, and impact lineage | Shared PROVE governance capability |
 | Test generation | Produce executable code, parameters, expected results, and cleanup | Test generation |
 | Quality and Coverage | Define verification space and measure generated tests | Coverage/evaluation project |
 | Capability equivalence | Independently evaluate Intent preservation and defect-detection preservation | Coverage/evaluation project |
@@ -39,7 +40,7 @@ Verification Knowledge and measurable Coverage are the core. Test generation, Ic
 | Mass execution | Allocate, schedule, observe, and collect large-scale runs | SkyTower |
 | Failure analysis | Reproduce, classify, explain, and select follow-up action | Failure analysis |
 | Repair loop | Modify Test Cases or recover environments, validate, and rerun | Cross-project workflow |
-| Package governance | Version, validate, approve, and distribute Test Cases | Global package |
+| Package governance | Reference reviewed Test Versions through Package and Gate Baseline Manifests without rewriting historical adoption | Global package |
 | Firmware feedback | Generate and execute tests from SRS, policy, code, and changes | FW integration |
 | Knowledge governance | Maintain shared definitions, decisions, and provenance | PROVE Root Knowledge |
 

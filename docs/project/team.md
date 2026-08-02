@@ -41,5 +41,12 @@ Effective allocation is expected to be 80–90% because maintenance and manageme
 - Data preparation
 - Cross-system interfaces
 - Root Knowledge governance
+- Verification-team domain representation for SWE, cSSD verification, eSSD verification, and FTE
+
+Multi-team Knowledge, Traceability, Test selection, and deployment rules require participation from experts representing each affected verification organization. The representatives and decision forum are not yet assigned.
 
 Names and accountability must be assigned through TF discussion rather than inferred from expertise.
+
+# Boundary
+
+This page describes the temporary PROVE TF composition and workstream ownership. The roles of verification organizations that use PROVE are maintained separately in [Verification Team R&R](/organization/verification-team-r-and-r.md).

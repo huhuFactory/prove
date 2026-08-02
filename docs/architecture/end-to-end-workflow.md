@@ -17,13 +17,20 @@ generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
 
 ```mermaid
 flowchart TD
-    A["Select versioned source knowledge"] --> B["Extract requirements and scenarios"]
+    R["Capture and version user Verification Request"] --> A["Resolve versioned source and applicability context"]
+    A --> B["Extract or select requirements and scenarios"]
     B --> C["Generate Test Case, configuration, expected result, and traceability"]
     C --> D["Build and automated validation"]
     D -->|Invalid| C
-    D -->|Valid| E["Execute through IceT and execution infrastructure"]
+    D -->|Valid| Q["Resolve feasible environment and Execution Plan"]
+    Q -->|Unmet condition| O["Request human intervention with evidence"]
+    Q -->|Feasible| E["Execute through IceT and execution infrastructure"]
     E --> F["Collect device, platform, host, environment, and FW evidence"]
-    F --> G["Reproduce and analyze"]
+    F --> V{"Test Verdict"}
+    V -->|Pass| P["Update quality and Coverage evidence"]
+    V -->|Fail| S["Freeze first-Failure Evidence"]
+    S --> FA["Trigger PROVE Failure Analysis Agent"]
+    FA --> G["Plan reproduction as needed and analyze"]
     G --> H{"Disposition"}
     H -->|Device failure| I["Send evidence to downstream failure system"]
     I --> J{"Downstream correction?"}
@@ -35,8 +42,7 @@ flowchart TD
     M --> E
     H -->|Other non-device| N["Apply type-specific action"]
     N --> E
-    H -->|Unknown or exhausted| O["Request human intervention with evidence"]
-    E --> P["Update quality and Coverage evidence"]
+    H -->|Unknown or exhausted| O
 ```
 
 # Loop Exit Conditions

@@ -2,7 +2,7 @@
 
 ## Repository Purpose
 
-This repository is the canonical Root Knowledge Bundle for PROVE. It defines shared goals, terminology, principles, cross-project architecture, metrics, and governance. IceT, SkyTower, scenario extraction, test generation, and failure analysis implementation details belong in their own repositories.
+This repository is the canonical Root Knowledge Bundle for PROVE. It defines shared goals, terminology, architecture, metrics, and governance. Subproject implementation details belong in their owning repositories.
 
 Before working, read:
 
@@ -10,10 +10,11 @@ Before working, read:
 2. `docs/principles/core-value.md`
 3. `docs/project/vision.md` and `docs/project/scope.md`
 4. `docs/glossary/glossary.md`
-5. Relevant principles, interfaces, and decisions
-6. `docs/open-questions/open-questions.md`
+5. `docs/governance/generated-artifact-governance.md`
+6. Relevant principles, interfaces, and decisions
+7. `docs/open-questions/open-questions.md`
 
-Do not infer unresolved facts. Record them as open questions.
+Do not infer unresolved facts. Record them as open questions. Capture evolving leader discussions in dated sources and derived `draft` concepts. Never overwrite prior sources or promote content to `stable` without explicit authority.
 
 ## Non-Negotiable Project Rule
 
@@ -23,32 +24,36 @@ Coverage dimensions and the total verification space are intentionally undefined
 
 Every proposal must explain how it advances the core. Tools may change when that better serves the goal.
 
+Test Scenario extraction is the first durable verification-asset priority. Governance of every Scenario and later generated artifact is the next priority. Every stage must declare versioned Inputs and Outputs; every durable Output must have an Evidence-based Review Record before official downstream use.
+
 ## Knowledge Organization
 
-Documents under `docs/` follow OKF v0.2. Every Markdown file except reserved `index.md` and `log.md` files must have YAML frontmatter with at least `type`. Use `status: draft | stable | deprecated`; new knowledge defaults to `draft`. Add `sources` for derived claims and `generated` for material edits.
+Documents under `docs/` follow OKF v0.2. Except for reserved `index.md` and `log.md`, every Markdown file needs YAML frontmatter with `type`. Use `status: draft | stable | deprecated`; default to `draft`. Add `sources` and `generated` metadata.
 
-Root knowledge contains only information shared across multiple projects. Project-local requirements, APIs, runbooks, and implementation ADRs stay in the owning repository. Promote local knowledge to Root through review when it changes common terminology, principles, capabilities, metrics, or interfaces.
+Root contains cross-project knowledge. Local requirements, APIs, runbooks, and implementation ADRs stay in the owning repository. Promote local knowledge through review when it changes common terms, principles, metrics, capabilities, or interfaces.
 
 ## Editing Workflow
 
 - Update existing concept pages instead of creating overlapping documents.
 - Link related concepts with bundle-relative Markdown links, such as `/principles/ssd-verification.md`.
-- Preserve confirmed facts and clearly label proposals, targets, and hypotheses.
+- Label facts, proposals, targets, and hypotheses clearly.
+- For every stage or Workstream, document Inputs, Outputs, Output Review, downstream consumers, and what cannot yet be decided.
+- Preserve superseded thinking in dated sources and logs.
 - Add unresolved decisions to `docs/open-questions/open-questions.md`.
 - Record meaningful structural changes in `docs/log.md`.
 - Use `docs/templates/` when starting a subproject knowledge bundle or ADR.
 
 ## Validation
 
-No build system is configured. Before submitting changes, run:
+Before submitting changes, run:
 
 ```bash
 git diff --check
 rg --files docs
 ```
 
-Verify internal links, YAML syntax, dates, and lifecycle states. Do not mark a document `stable` or add a `human:` verifier without explicit human review.
+Verify links, YAML, dates, and lifecycle states. Never add `stable` or a `human:` verifier without explicit human review.
 
 ## Commits and Reviews
 
-Use concise imperative subjects, for example `Define PROVE failure lifecycle`. Keep commits scoped to one knowledge change. Pull requests should explain the changed decision or concept, affected subprojects, evidence, unresolved questions, and required downstream knowledge-version updates.
+Use imperative subjects such as `Define PROVE failure lifecycle`. Keep commits scoped. Reviews should explain the change, evidence, affected subprojects, open questions, and downstream knowledge-version updates.

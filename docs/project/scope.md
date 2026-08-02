@@ -15,10 +15,15 @@ sources:
     title: PROVE leader Coverage core directive
     author: human:prove-leader
     last_modified: 2026-07-27
-generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
+  - id: discovery-2026-08-02
+    resource: /sources/discovery-2026-08-02.md
+    title: PROVE working discovery discussion
+    author: human:prove-leader
+    last_modified: 2026-08-02
+generated: { by: openai-codex/gpt-5, at: "2026-08-02T00:00:00+09:00" }
 ---
 
-# Workstreams
+# Current Mission Model
 
 ## Spec-to-Test Platform
 
@@ -26,21 +31,23 @@ Use official NVMe specifications, OCP specifications, customer specifications, a
 
 The first verification focus is HIL. FTL policy and security-feature verification remain part of the broader domain but are not confirmed as the initial implementation scope.
 
-## Global Test Package Integration
+## FLAIR-Integrated Verification
 
-Extract implicit Verification Intent and reusable engineering knowledge from more than 20,000 independently managed test cases, identify overlap and gaps, rewrite tests for the common platform, and produce a global package.
+Use firmware policy, specifications, requirements, source context, change intent, and generated firmware artifacts from FLAIR as another input path into the shared PROVE pipeline.
+
+## Global Test Package Convergence
+
+Extract implicit Verification Intent and reusable engineering knowledge from more than 20,000 independently managed Tests, identify overlap and gaps, and migrate validated areas gradually. The Global Test Package is a natural result of PROVE adoption rather than a forced merge mission.
 
 The integrated package must be evaluated for both Intent preservation and actual defect-detection preservation. Test Case count or code similarity is not sufficient evidence.
 
-Independent owners may be different sites or different teams within one site. Ownership, approval, and migration policy remain undefined.
-
-## Firmware Development Integration
-
-Use SRS, firmware policy, generated code, and code changes to generate and execute relevant tests at the firmware developer's workstation, then feed results back into development.
+Four verification-team packages are selected as initial legacy sources. Detailed ownership, baseline commits, and migration approval remain undefined.
 
 # Initial Focus
 
 The initial focus is the common NVMe portion shared by eSSD and cSSD. The first input may use one or two specification types and fewer than ten features. Exact scope is not yet selected.
+
+Firenze is the first real-project pilot. Legacy Tests remain official, and PROVE-generated Tests also contribute to official verdicts. Full PROVE use is targeted for the following project.
 
 # Explicit Boundaries
 

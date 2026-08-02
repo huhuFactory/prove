@@ -53,6 +53,8 @@ commit: "<exact commit SHA>"
 - Root capabilities owned
 - In-scope and out-of-scope work
 - Inputs and outputs
+- Output Review criteria, Review Record, and downstream eligibility
+- Artifact identity, Version, lifecycle, correction, and Revocation rules
 - Upstream and downstream interfaces
 - Success evidence
 - Owners
@@ -64,13 +66,20 @@ commit: "<exact commit SHA>"
 1. Read `prove-knowledge.lock`.
 2. Load the pinned `/principles/core-value.md`.
 3. Load the pinned Root vision, glossary, remaining principles, capabilities, and interfaces.
-4. Read local `docs/project.md`.
-5. Read relevant local requirements and accepted ADRs.
-6. Report unresolved conflicts before implementing.
+4. Load the pinned `/governance/generated-artifact-governance.md`.
+5. Read local `docs/project.md`.
+6. Read relevant local requirements and accepted ADRs.
+7. Report unresolved conflicts before implementing.
 
 # Core Alignment Rule
 
 The subproject and every Agent must treat its implementation technology as replaceable. It must not define a Coverage axis as authoritative or claim package equivalence from Test Case count, code similarity, or semantic similarity alone.
+
+# Artifact Contract Rule
+
+Every local stage declares versioned Inputs, processing ownership, versioned Outputs, Output Review, downstream consumers, and unresolved details. A durable Output without a Review Record remains experimental and cannot silently become an official downstream Input.
+
+Use the Root [Stage Input, Output, and Review Template](/templates/stage-input-output-review.md) for each material pipeline stage.
 
 # Promotion Rule
 

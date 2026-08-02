@@ -15,7 +15,12 @@ sources:
     title: PROVE leader Coverage core directive
     author: human:prove-leader
     last_modified: 2026-07-27
-generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
+  - id: discovery-2026-08-02
+    resource: /sources/discovery-2026-08-02.md
+    title: PROVE working discovery discussion
+    author: human:prove-leader
+    last_modified: 2026-08-02
+generated: { by: openai-codex/gpt-5, at: "2026-08-02T00:00:00+09:00" }
 ---
 
 # Status
@@ -31,6 +36,21 @@ Coverage is the central PROVE research and engineering problem. No authoritative
   - actual defect-detection capability preservation.
 - Existing Test Cases are sources of implicit expert knowledge, not only code to translate.
 - Specific Coverage axes are intentionally deferred to PROVE verification experts.
+
+# Scenario, Case, and Evidence Relationship
+
+The approved conceptual relationship is:
+
+```text
+Test Scenario
+→ defines meaningful verification intent and the space to explore
+Test Case
+→ selects concrete states, paths, conditions, and parameter combinations
+Execution Evidence
+→ demonstrates what was actually reached, observed, and decided
+```
+
+Scenario alone cannot demonstrate Coverage, and Test Case count alone cannot define it. Coverage claims require a defined space, traceable Case selection, and execution Evidence. This relationship does not approve any particular axis or formula.
 
 # Central Questions
 
@@ -77,3 +97,9 @@ The detailed axes, dataset size, and acceptance thresholds remain open.
 # Reporting Rule
 
 When a Coverage computation becomes authoritative, define it as an OKF `Attested Computation` with a deterministic executor, receipt, and attester. Until then, reported Coverage values must be labeled experimental.
+
+# First Coverage Method Review
+
+The current working target is to produce an operationally applicable Coverage system within the first two weeks and review it in Milestone Review 2. The exact calendar date cannot yet be decided until TF scheduling and Milestone Review 1 scope are complete. It must accept real Requirement and Legacy Test assets, calculate and explain Coverage, identify Gaps, and guide Scenario derivation. Verification leaders and executives are expected to review it before downstream generation expands.
+
+The four verification-team packages are known inputs. The concrete initial Specification, Feature, and package subset remain open.

@@ -49,9 +49,25 @@ Test agents may perform adverse device operations required by test intent. They 
 - Agents must not claim human verification.
 - Automatic actions must be attributable to a model, workflow, tool, and input version.
 
+# Artifact Input, Output, and Review
+
+Every Agent stage declares its exact versioned Inputs and produces a versioned Output. Each durable Output links to its producing Run and receives an artifact-appropriate Review Record before official downstream use. Accepted Outputs become downstream Inputs; revision creates a new Version. Raw events and Evidence receive integrity and completeness checks when semantic acceptance is not applicable.
+
+An Agent must explicitly state when a schema, threshold, authority, or policy cannot yet be decided. It must not fill that gap through an undocumented default.
+
 # Failure Handling
 
 Agents classify failures as device, non-device, or unknown. Non-device failures receive type-specific analysis, repair or recovery, validation, and rerun. Unknown or exhausted cases request human intervention with collected evidence.
+
+# Knowledge Promotion Boundary
+
+An Agent may create Draft Knowledge, collect Evidence, and recommend promotion. The Knowledge-producing Agent must not independently promote its own output to official Trust. Initial promotion uses independent evaluation and approval by the accountable expert for the target scope.
+
+# Run Identity
+
+Every Agent workflow attempt has an immutable Run identity linked to its Verification Request. Retry, resume, regeneration, Model or Prompt changes, and re-execution create linked new Attempts rather than overwriting prior events or artifacts.
+
+Agent Handoffs reference versioned Artifacts and Evidence. Resume may use only a still-valid Checkpoint; changed upstream inputs invalidate the affected downstream work. Retry must be bounded and traceable even when its exact policy is project-specific.
 
 # Security
 

@@ -15,17 +15,25 @@ sources:
     title: PROVE leader Coverage core directive
     author: human:prove-leader
     last_modified: 2026-07-27
-generated: { by: openai-codex/gpt-5, at: "2026-07-27T00:00:00+09:00" }
+  - id: discovery-2026-08-02
+    resource: /sources/discovery-2026-08-02.md
+    title: PROVE working discovery discussion
+    author: human:prove-leader
+    last_modified: 2026-08-02
+generated: { by: openai-codex/gpt-5, at: "2026-08-02T00:00:00+09:00" }
 ---
 
 # Roadmap Principles
 
 Stages are governed by exit evidence rather than dates alone. Work may proceed in parallel after interfaces and evaluation criteria are agreed.
 
+The current horizon model is two, four, and six months. See the [Milestone Framework](/project/milestones.md) and the detailed [Two-Month Integrated Execution Framework](/project/two-month-execution-framework.md). Only the two-month outcome is currently detailed.
+
 # Directional Stages
 
 ## Foundation
 
+- Use the first two weeks as a working target for an operational Coverage method and Milestone Review 2. The exact calendar date cannot yet be decided until TF scheduling and scope review are complete.
 - Approve the charter, glossary, knowledge governance, and capability boundaries.
 - Select initial specifications and features.
 - Work with verification experts to define the verification-space construction process.
@@ -60,10 +68,10 @@ The current internal demonstration target is 2026-08-27.
 ## Scale and Expansion
 
 - Expand specification and feature coverage.
-- Integrate global test packages.
+- Continue validated gradual convergence toward a Global Test Package.
 - Connect SRS, firmware policy, and code-change workflows.
 - Operate across large-scale SkyTower environments.
 
 # Date Status
 
-An initial result is desired around 2026-09-30. TF duration may be extended after the plan and evidence are reviewed.
+An initial two-month result remains the first committed horizon. The current planning targets are 2026-08-27 for the first demonstration and around 2026-09-30 for the integrated outcome. Formal commitments and later milestone contents remain adjustable pending TF review.

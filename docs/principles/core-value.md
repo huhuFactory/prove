@@ -55,6 +55,12 @@ Agents and subprojects may propose candidate dimensions or experiments, but must
 
 Existing Test Cases are not only migration inputs. They are evidence of accumulated engineering knowledge. PROVE must extract reusable verification intent and patterns from them so that a new specification can receive expert-level tests even when the specification does not state that experience explicitly.
 
+# Primary Long-Term Asset
+
+[Test Scenario](/principles/test-scenario-primacy.md) is PROVE's most important long-term verification asset. Generating and selecting Test Cases that meaningfully fill its verification space is also a core capability. Test Scripts, libraries, tools, languages, and runtimes are replaceable implementations around them.
+
+The [semantic and state-aware generation proposal](/principles/semantic-state-aware-case-generation.md) frames how the TF may connect Scenario meaning, SSD state exploration, controlled variation, and execution feedback without prematurely defining Coverage axes.
+
 # Tool Neutrality
 
 IceT, SkyTower, implementation languages, models, RAG systems, and agent frameworks are enabling tools. They may be redesigned, adapted, or replaced.

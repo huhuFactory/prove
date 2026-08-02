@@ -10,7 +10,12 @@ sources:
     title: PROVE leader discovery discussion
     author: human:prove-leader
     last_modified: 2026-07-26
-generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
+  - id: discovery-2026-08-02
+    resource: /sources/discovery-2026-08-02.md
+    title: PROVE working discovery discussion
+    author: human:prove-leader
+    last_modified: 2026-08-02
+generated: { by: openai-codex/gpt-5, at: "2026-08-02T00:00:00+09:00" }
 ---
 
 # Boundaries
@@ -21,9 +26,10 @@ generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
 | PROVE → IceT | Existing IceT uses JS and high-level feature APIs; redesign is considered | Test artifact, build, execution request, device control, result |
 | PROVE → SkyTower | APIs exist but are considered too heavy for PROVE without adaptation | Lightweight job, state, evidence, retry, and cancellation model |
 | IceT → DUT controls | Broad pyNVMe-class control plus internal sideband and driver capabilities | Capability discovery, invocation, evidence, recovery |
-| PROVE → downstream failure system | Target system exists; API requires owner discussion | Handoff package, status, correction feedback |
+| FLAIR → PROVE | FLAIR supplies firmware-development context; exact schema is unknown | Policy, Requirement, change, code, artifact, and identity context |
+| PROVE → BRAIN | Device failures are intended for automatic Agent-to-Agent handoff | Evidence package, status, analysis, and reclassification feedback |
 | PROVE → official Test Package | Automatic validated promotion is intended | Version, validation evidence, compatibility, rollback, ownership |
-| FW development → PROVE | SRS, policy, source, and generated code are accessible | Change context, affected behavior, test request, feedback |
+| BRAIN → FLAIR | Full closed-loop feedback is a future target, not a two-month commitment | Root cause, repair context, change request, and regression identity |
 
 # Common Identity Needs
 

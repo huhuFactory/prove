@@ -8,6 +8,8 @@ Start with [docs/index.md](docs/index.md).
 
 The initial bundle was compiled from the PROVE leader's discovery discussions beginning on 2026-07-26. Most concepts remain drafts until reviewed by the TF. The [PROVE Core Value](docs/principles/core-value.md) has been explicitly confirmed by the PROVE leader.
 
+Ongoing discussions are stored as dated sources and synthesized into `draft` concepts. A working idea may change without being mistaken for an approved commitment.
+
 ## Principles
 
 - Verification knowledge and measurable Coverage are the project core.
@@ -18,4 +20,5 @@ The initial bundle was compiled from the PROVE leader's discovery discussions be
 - Subprojects store their own requirements, designs, decisions, and runbooks.
 - Unknowns remain explicit; agents must not silently fill gaps.
 - Every important claim must be traceable to a source or decision.
+- Every durable stage Output must link to versioned Inputs, a producing Run, Evidence, and an Output Review Record before official downstream use.
 - Human review, generation history, and lifecycle state remain visible.

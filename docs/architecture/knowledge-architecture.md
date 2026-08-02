@@ -52,6 +52,8 @@ Root content must not be manually copied into subproject documentation. A subpro
 
 Every subproject must load [PROVE Core Value](/principles/core-value.md) before project-local goals. A subproject charter must state how its work contributes to Verification Knowledge, broader or better tests, measurable Coverage, or evidence. Tool delivery alone is not sufficient alignment.
 
+This documentation federation is distinct from the operational verification registry. Multi-team Specifications, Requirements, Scenarios, Cases, and execution Evidence require a shared logical identity and Traceability plane as described in [Multi-Team Verification Knowledge Operation](/architecture/multi-team-verification-knowledge.md); they are not stored directly in this Root bundle.
+
 # LLM Wiki Rule
 
 Agents should update existing concepts, connect related concepts, expose contradictions, preserve sources, and append meaningful changes to `log.md`. They must not convert an unresolved question into a fact.

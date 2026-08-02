@@ -39,6 +39,7 @@ Guardrails must preserve test intent rather than ban adverse device operations. 
 - Versioned changes
 - Deterministic escalation
 - Reproducible model, prompt, tool, code, and environment history
+- Immutable first-Failure Evidence before Reset, recovery, rerun, or repair
 
 # Human Escalation
 
@@ -47,3 +48,7 @@ Guardrails must preserve test intent rather than ban adverse device operations. 
 # Feedback
 
 A device failure handed to a downstream system remains a PROVE disposition. If downstream analysis reclassifies it as non-device, that result must return to PROVE for reanalysis and future evaluation.
+
+# Draft Knowledge Boundary
+
+Agents may use Draft Verification Knowledge in an explicitly experimental lineage and collect promotion Evidence. Draft Knowledge must not silently influence official Coverage, project verdicts, official Test Packages, or Gate Baselines.

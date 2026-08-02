@@ -10,6 +10,11 @@ sources:
     title: PROVE leader discovery discussion
     author: human:prove-leader
     last_modified: 2026-07-26
+  - id: test-execution-qualification-directive-2026-08-02
+    resource: /sources/test-execution-qualification-directive-2026-08-02.md
+    title: PROVE leader Test execution qualification directive
+    author: human:prove-leader
+    last_modified: 2026-08-02
 generated: { by: openai-codex/gpt-5, at: "2026-07-26T00:00:00+09:00" }
 ---
 
@@ -25,7 +30,7 @@ Reset, power interruption, malformed or adverse sequences, error injection, and 
 
 ## The Platform Must Retain Control
 
-For any technically supported verification action, IceT and the surrounding execution system must retain execution control, record evidence, and recover or terminate deterministically. Device resets must not cause the Test Platform itself to stop unexpectedly.
+For any technically supported verification action, IceT must retain execution control and Evidence through Reset, injected Error, and abnormal Device state, then continue, recover, or terminate deterministically. This is a Platform invariant rather than an optional property of an individual Test. Loss of IceT control must not be mislabeled as poor Test generation.
 
 ## Stable Core, Generated Feature Logic
 
