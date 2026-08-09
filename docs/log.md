@@ -1,5 +1,40 @@
 # Knowledge Update Log
 
+## 2026-08-09
+
+- **Source Capture**: Preserved the leader's evolving feedback on PROVE principles, Scenario-generation sources, quality, Firenze incremental application, the `eSSD 커버리지 강화 sTF` dependency, and schedule.
+- **Draft Record**: Added an executive discussion document containing only the leader's stated ideas and explicitly retained missing content as unresolved rather than filling it with Agent proposals.
+- **Draft Clarification**: Recorded the confirmed full wording that intended verification on a real Device and correct judgment must be demonstrated through reproducible results.
+- **Leader Wording**: Recorded the confirmed Test Scenario generation statement, including `FW 개발 산출물(FLAIR Docs)` as an input without making Scenario generation a mechanical document-to-Test conversion.
+- **Draft Visualization**: Added a Mermaid representation of the leader's Verification Space model: Spec and FW-development-artifact Scenarios fill parts of each Space Area, while existing Test knowledge, Device information, and expert knowledge address the remaining Space and Gaps.
+- **Leader Clarification**: Reframed Scenario generation as three strategies and clarified that PROVE supports the responsible expert engineer in filling the remaining Space rather than autonomously substituting for that expertise.
+- **Leader Clarification**: Moved the `eSSD 커버리지 강화 sTF` Verification Space expected by 2026-08-31 into the main Scenario-generation statement and removed the redundant standalone subsection.
+- **Draft Structure**: Combined current-state diagnosis, the ideal goal, and the still-undefined realistic goal under `현재 수준 진단과 단계적 목표`, then renumbered the following sections.
+- **Leader Confirmation**: Aligned Scenario-generation subsections with the three approved strategies and moved Leveling, Graph, Feature visibility, and Gap analysis into a shared cross-strategy section.
+- **Responsibility Clarification**: Assigned Verification Space and Space Area definition to the separate `eSSD 커버리지 강화 sTF`; PROVE consumes that definition to map existing Scenarios, identify Gaps, and fill the Space through its three strategies.
+- **Draft Structure**: Reordered the opening narrative to ideal goal, current-state diagnosis, and realistic goal for executive communication.
+- **Leader Goal**: Defined the unconstrained ideal as complete Device-verification Coverage through generated Scenarios and autonomous Scenario generation, real-Device verification, and result judgment without human intervention; kept current sTF constraints outside the ideal goal.
+- **Leader Diagnosis**: Explained that accumulated Test Packages cannot serve as the denominator for Device Coverage because the complete combination space is undefined, and positioned the sTF-defined Verification Space as PROVE's practical input for Scenario and Gap management.
+- **Draft Structure**: Split the current-state diagnosis into Coverage-calculation and human-free-autonomy limitations, avoiding forward references to Scenario-generation strategies that are introduced later.
+- **Leader Correction**: Removed undefined Test Scenario and Device-result Quality criteria as a stated cause of human intervention; PROVE will pursue those Quality assurances rather than use their current status as a diagnosis premise.
+- **Leader Boundary**: Distinguished independently generatable Scenario areas from areas requiring expert judgment, where the responsible engineer leads Scenario creation with PROVE support.
+- **Diagnosis Precision**: Replaced an unsupported AI-generation limitation with the evidence-oriented statement that Spec and FW inputs alone cannot establish Scenario completeness across the defined verification domain.
+- **Neutral Diagnosis**: Reframed Spec, FW artifacts, Legacy Test knowledge, and expert judgment as complementary inputs; located the limitation in their current lack of structure for independent PROVE combination rather than in FW artifact quality.
+- **Current Direction**: Connected the autonomy limitation to extraction and structuring, expert-led collaboration where needed, reusable knowledge accumulation, and progressive expansion of PROVE's independent Scenario-generation scope.
+- **Autonomy Link**: Made Test Scenario generation the first autonomy priority and linked it progressively to Test generation, real-Device execution, and result judgment.
+- **Executive Draft Structure**: Removed the standalone core-sentence section, added a table of contents, and renumbered the draft from section 1.
+- **Scenario Strategy Detail**: Expanded Specification, legacy Test Package, FW artifact, expert-supported Scenario generation, Coverage tracking, and generated-result Quality evaluation in the executive draft.
+- **Legacy Leveling Evidence**: Recorded L1 through L7 Test Leveling as an existing analysis result and combined Requirement–Scenario linking, Leveling, and gap identification into one flow.
+- **White-box Direction**: Added AI-assisted FW and Device implementation analysis as the basis for pursuing White-box-level Test Scenario generation.
+- **Scenario Section Alignment**: Aligned the Specification and FW-based Scenario sections to parallel generation, deeper-analysis, and Coverage/application stages without removing content.
+- **Expert Scenario Support**: Structured expert-supported Scenario generation around AI limits, Rule/Skill/Template assistance, IceT experience, and verification-engineer usability feedback.
+- **Firenze Incremental Strategy**: Defined FLAIR-led Firenze inputs, preservation of existing Scenarios, Coverage-gap additions, and incremental extension for new customer requests and Milino; removed the now-duplicated Feedback section.
+- **Scenario Schedule**: Set the overall Test Scenario schedule to 2026-08-03 through 2026-10-05 and retained sections 2.1, 2.2, and 2.3 as Gantt duration bars with adjustable overlap and dependencies.
+- **Draft Structure**: Kept limitations in the current-state diagnosis and moved the sTF-defined Space approach and expert collaboration into `현실적인 목표와 접근`.
+- **Draft Structure**: Reorganized the opening around two stable axes—Coverage and autonomous verification—each with ideal goal, current limitation, and realistic approach, preceded by a one-line summary.
+- **Leader Framing**: Renamed the section to `PROVE의 목표와 점진적 추진 방향`, replaced `현실적인 접근` with `현재 추진 방향`, and stated that Coverage breadth and autonomy expand progressively from the currently defined scope.
+- **Open Questions**: Added unresolved decisions for the Firenze Baseline and denominator, Scenario Leveling and Graph, the third FTL Source, sTF handoff, and customer-Spec Vector Database search quality.
+
 ## 2026-08-02
 
 - **Decision**: Elevated Governance of every generated artifact to the priority immediately after Test Scenario extraction and required explicit stage Inputs, versioned Outputs, Evidence-based Review Records, and downstream Input lineage.

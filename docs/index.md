@@ -15,6 +15,7 @@ PROVE is an AI-based SSD verification platform intended to generate, execute, an
 - [Roadmap](/project/roadmap.md)
 - [Milestone Framework](/project/milestones.md)
 - [Two-Month Integrated Execution Framework](/project/two-month-execution-framework.md)
+- [PROVE Principle and Firenze Application Strategy](/project/prove-principle-and-firenze-strategy.md)
 - [Adoption and Migration](/project/adoption-and-migration.md)
 - [Team](/project/team.md)
 - [Verification Team R&R](/organization/verification-team-r-and-r.md)

@@ -25,6 +25,9 @@ generated: { by: openai-codex/gpt-5, at: "2026-08-02T00:00:00+09:00" }
 
 # Product and Evaluation
 
+- What exact Baseline defines Firenze's inherited verification scope, and how are incremental Spec, customer, FW, Test, and Failure changes classified and approved?
+- How will the `eSSD 커버리지 강화 sTF` Verification Space result expected on 2026-08-31 be used by PROVE?
+- What portion of Firenze SSD Verification will PROVE cover when the whole is treated as 100?
 - How is the verification space representing 100% constructed and bounded?
 - What dimensions and computation define Test Case Coverage?
 - How is Verification Intent represented and extracted from legacy tests?
@@ -32,6 +35,10 @@ generated: { by: openai-codex/gpt-5, at: "2026-08-02T00:00:00+09:00" }
 - What evidence independently proves actual defect-detection preservation?
 - How is reusable engineering knowledge applied to a new specification?
 - What is the approved granularity and schema of a Verification Pattern?
+- How will the existing L1 through L7 Test Level definitions and Requirement or Feature mapping criteria be incorporated into PROVE?
+- How should a Graph represent the serial, parallel, and combination relationships of Commands, Resets, and other Test Scenario operations?
+- What PoC proves that FW Code, FLAIR Docs, FTL policy, Device state, and implementation information can generate useful Test Scenarios and support Coverage tracking?
+- What similarity, equivalence, and acceptance criteria compare PROVE-generated Scenarios and Scripts with human-authored Test Package assets?
 - What state and semantic model should guide Test Case generation without excluding exploratory randomness?
 - How are generated Cases selected, explained, retained, and fed back after execution?
 - What State Contract schema represents Pre-State, state effects, Post-State, and cleanup or preservation policy?
@@ -72,6 +79,7 @@ generated: { by: openai-codex/gpt-5, at: "2026-08-02T00:00:00+09:00" }
 - What PROVE-facing API replaces or adapts its current heavy interface?
 - What API and ownership agreement is available for the downstream failure system?
 - Can PROVE modify the internal Spec RAG, or only query it?
+- How is customer-Spec Vector Database search accuracy confirmed, and what can be reused from the Agent TAG work associated with TL 정인호?
 - What are the FLAIR input and feedback contracts?
 - What are the PROVE-to-BRAIN handoff and BRAIN feedback contracts?
 
