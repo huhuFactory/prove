@@ -21,6 +21,8 @@ sources:
     description: 2026-09-21 사용자가 Device Reset·전원 차단 및 복구 후 시드 테이블을 그대로 유지한다고 확인
   - id: user-copy-mode-2026-09-21
     description: 2026-09-21 사용자가 설명한 Copy 지원 모드의 7비트 시드, 최상위 Copy 플래그와 Read 판정
+  - id: user-copy-flag-clear-2026-09-21
+    description: 2026-09-21 사용자가 Copy된 대상에 일반 Write 성공 시 Copy 플래그 해제와 새 시드 갱신을 확인
 generated: { by: openai-codex, at: "2026-09-21" }
 ---
 
@@ -206,7 +208,9 @@ Copy 성공 시 원본 LBA의 시드를 대응하는 **대상 LBA의 추적 항�
 
 사용자가 설명한 조건에는 원본 LBA 주소를 별도로 대조하는 절차가 포함되어 있지 않다. 같은 시드를 가진 다른 데이터까지 구분하는지는 확인되지 않았으며, 앞서 설명한 시드 중복의 검출 한계를 이 모드에서도 고려해야 한다.
 
-예약 상태인 원본의 Copy, 연속 Copy, Copy된 대상에 일반 Write를 수행할 때의 플래그 처리와 실제 모드 이름은 추후 확인한다. 이 절은 NVMe Copy 명령에 관한 설명이며 별도의 `MultiCopy Write` 명령을 정의하지 않는다.
+Copy된 대상 LBA에 **일반 Write가 성공하면 Copy 플래그를 해제하고 해당 Write의 새 시드로 갱신**한다. 이후에는 Copy에 따른 LBA 불일치 허용을 적용하지 않고 일반 Write 데이터로 검사한다. 이 규칙은 Data Checker가 해당 호출을 처리할 때 적용하며, `Compare=false`인 호출은 기존 설명대로 추적 상태를 변경하지 않는다.
+
+예약 상태인 원본의 Copy, 연속 Copy와 실제 모드 이름은 추후 확인한다. 이 절은 NVMe Copy 명령에 관한 설명이며 별도의 `MultiCopy Write` 명령을 정의하지 않는다.
 
 ### 고정 영역을 이용한 CRC 계산 최적화
 
@@ -288,7 +292,7 @@ NVM Express의 [Sanitize 소개](https://nvmexpress.org/changes-in-nvme-revision
 - Write 패턴의 실제 비트 배분·비트 위치·바이트 순서와 시드 필드 손상 시 분류 규칙
 - 모드별 시드 선택 규칙·유효 범위, 예약값의 정확한 개수·상태 매핑과 nibble 모드의 대응
 - CRC의 정확한 명칭·알고리즘, 테이블 구조·크기와 적용 경로
-- Copy 지원 모드의 이름, 예약 상태 원본·연속 Copy 처리, 일반 Write 시 Copy 플래그 처리와 Read 검사 범위
+- Copy 지원 모드의 이름, 예약 상태 원본·연속 Copy 처리와 Read 검사 범위
 - 지원 명령과 예외 명령의 전체 목록
 - 개별 API 옵션의 정확한 표기와 명령별 지원 범위
 - 타임아웃 확정·늦은 완료 및 중첩·동시 실행 명령 처리
