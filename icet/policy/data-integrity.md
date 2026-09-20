@@ -15,6 +15,8 @@ sources:
     description: 2026-09-21 사용자가 앞선 Write 표현에 Write Uncorrectable과 DSM 등 데이터 관련 상태 변경 동작도 포함한다고 정정
   - id: user-compare-bypass-2026-09-21
     description: 2026-09-21 사용자가 설명한 Compare=false의 Data Checker 전체 우회, 추적 상태 유지 및 호출자 책임
+  - id: user-checker-startup-exclusion-2026-09-21
+    description: 2026-09-21 사용자가 설명한 --disableDataChecking의 시작 시 Data Checker 제외 및 실행 중 활성화 불가
 generated: { by: openai-codex, at: "2026-09-21" }
 ---
 
@@ -26,16 +28,22 @@ Test Case 작성 시 필요한 Data Checker의 기본 동작, 명령별 예상 �
 
 ## 1. 기본 검사 정책
 
-IceT는 기본적으로 Data Integrity 검사를 활성화한다. 다음 설정으로 비교를 비활성화할 수 있다.
+IceT는 기본적으로 Data Integrity 검사를 활성화한다. 다음 두 설정은 적용 범위와 동작이 다르다.
 
-| 적용 범위 | 설정 |
-|---|---|
-| IceT 시작 시 | `--disableDataChecking` |
-| 개별 I/O API 호출 시 | `Compare` 옵션을 `false`로 설정 |
+| 적용 범위 | 설정 | 동작 |
+|---|---|---|
+| IceT 실행 전체 | 시작 옵션 `--disableDataChecking` | Data Checker 자체를 제외하고 시작. 실행 중 활성화 불가 |
+| 개별 I/O API 호출 | `Compare=false` | 해당 호출만 Data Checker 로직 우회. 기존 추적 상태 유지 |
 
 검사가 활성화되어 있어도 모든 Read의 데이터가 비교되는 것은 아니다. Data Checker가 해당 명령을 지원하고, 대상 LBA에 비교 가능한 예상 상태가 기록되어 있어야 한다. 초기 상태가 `비교 안 함`인 LBA와 일부 예외 명령은 검사 대상에서 제외된다.
 
-### `Compare=false`: Data Checker 전체 우회
+### `--disableDataChecking`: 시작 시 Data Checker 제외
+
+사용자 설명에 따르면 이 옵션은 호출별로 Data Checker를 우회하는 수준이 아니라, **IceT 시작 시 Data Checker 자체를 제외하는 옵션**이다. 이 옵션으로 시작한 실행에서는 중간에 Data Checker를 켤 수 없다.
+
+따라서 개별 API에서 `Compare=true`를 지정하는 것으로 Data Checker를 다시 활성화할 수 없다. Data Checker가 필요한 Test는 이 옵션 없이 IceT를 시작해야 한다. 아래의 LBA별 추적 상태, 성공·실패 시 상태 갱신과 수동 Data Checker 상태 설정은 Data Checker를 포함해 시작한 실행을 전제로 한다.
+
+### `Compare=false`: 해당 호출의 Data Checker 전체 우회
 
 개별 I/O API에서 `Compare=false`로 설정하면 **해당 호출은 Data Checker 로직을 아예 실행하지 않는다.** 단순히 Read 데이터 비교만 생략하는 옵션이 아니다.
 
@@ -46,7 +54,7 @@ IceT는 기본적으로 Data Integrity 검사를 활성화한다. 다음 설정�
 
 사용자의 “false로 하는 순간 모든 책임은 호출자에게 있다”는 설명을 정책상 다음과 같이 정리한다. **Data Checker를 우회한 호출의 검증과 이후 추적 상태의 정합성은 Test Case 작성자가 책임진다.** 필요한 경우 별도 Data Checker API로 올바른 예상 상태나 `비교 안 함` 상태를 설정해야 한다.
 
-전역 `--disableDataChecking`도 내부 상태를 동일하게 유지하는지는 이번 설명으로 확정하지 않는다. 옵션의 정확한 API 표기와 명령별 지원 범위도 추가 확인이 필요하다.
+개별 API 옵션의 정확한 표기와 명령별 지원 범위는 추가 확인이 필요하다.
 
 ## 2. 검출 대상
 
@@ -75,7 +83,7 @@ Device의 각 LBA와 1:1로 대응하는 상태 메모리를 사용한다.
 
 ### 시작 시 상태
 
-IceT 시작 시 모든 LBA의 Data Checker 상태는 초기화되어 `비교 안 함`으로 설정된다. 이 상태에서 Read하면 반환 데이터의 내용은 비교하지 않는다.
+Data Checker를 포함해 IceT를 시작하면 모든 LBA의 Data Checker 상태는 초기화되어 `비교 안 함`으로 설정된다. 이 상태에서 Read하면 반환 데이터의 내용은 비교하지 않는다. `--disableDataChecking`으로 Data Checker 자체를 제외한 실행과는 구분한다.
 
 사용자 설명상 이때 Read 명령의 성공·실패는 완료 상태의 SC(Status Code)와 SCT(Status Code Type)로 판단한다. 명령 완료 성공은 데이터 내용의 무결성 검증 완료를 의미하지 않는다.
 
@@ -235,7 +243,7 @@ NVM Express의 [Sanitize 소개](https://nvmexpress.org/changes-in-nvme-revision
 
 ## 7. Test Case 작성 시 확인할 내용
 
-- 해당 I/O에서 비교가 활성화되어 있는가?
+- IceT가 Data Checker를 포함해 시작되었으며, 해당 I/O에서 비교가 활성화되어 있는가?
 - `Compare=false`로 데이터 변경 명령을 수행했다면 이후 검사에 사용할 추적 상태를 호출자가 정합하게 관리했는가?
 - Read 대상 LBA가 `비교 안 함` 상태인가, 비교 가능한 예상 상태인가?
 - 예상 결과가 정상 데이터인가, Write Uncorrectable에 따른 예상 오류인가?
@@ -249,7 +257,7 @@ NVM Express의 [Sanitize 소개](https://nvmexpress.org/changes-in-nvme-revision
 - CRC의 정확한 명칭·알고리즘, 테이블 구조·크기와 적용 경로
 - Copy의 원본·대상 상태 처리
 - 지원 명령과 예외 명령의 전체 목록
-- 옵션의 정확한 API 표기·명령별 지원 범위와 전역 `--disableDataChecking`의 추적 상태 처리
+- 개별 API 옵션의 정확한 표기와 명령별 지원 범위
 - 타임아웃 확정·늦은 완료 및 중첩·동시 실행 명령 처리
 - Write Uncorrectable Read의 기대 SC/SCT와 혼합 범위 처리
 - 기본 모드와 nibble 모드의 의미·제약 차이
