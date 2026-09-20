@@ -23,6 +23,8 @@ sources:
     description: 2026-09-21 사용자가 설명한 Copy 지원 모드의 7비트 시드, 최상위 Copy 플래그와 Read 판정
   - id: user-copy-flag-clear-2026-09-21
     description: 2026-09-21 사용자가 Copy된 대상에 일반 Write 성공 시 Copy 플래그 해제와 새 시드 갱신을 확인
+  - id: user-dc-mode-and-unchecked-copy-2026-09-21
+    description: 2026-09-21 사용자가 설명한 Data Checker Mode 시작 옵션과 비교 안 함 상태 원본의 Copy 시 대상 상태 전파
 generated: { by: openai-codex, at: "2026-09-21" }
 ---
 
@@ -189,6 +191,8 @@ Qword를 8바이트로 보고 인덱스를 0부터 매기면 마지막 인덱스
 
 ### Copy 지원 모드
 
+이러한 동작 모드의 명칭은 **Data Checker Mode**다. 사용자는 IceT 시작 시 모드를 선택하는 옵션을 `--dcMode`로 설명했다(M만 대문자). Copy를 지원하는 모드에 지정할 실제 옵션 값과 전체 모드 목록은 아직 제공되지 않았다.
+
 Copy를 지원하는 별도 모드에서는 LBA별 추적용 1바이트를 다음과 같이 사용한다. 이는 추적 테이블의 비트 구성으로, 앞뒤 데이터 Qword의 임시 비트 배치와 구분한다.
 
 | 추적 항목의 비트 | 의미 |
@@ -210,7 +214,9 @@ Copy 성공 시 원본 LBA의 시드를 대응하는 **대상 LBA의 추적 항�
 
 Copy된 대상 LBA에 **일반 Write가 성공하면 Copy 플래그를 해제하고 해당 Write의 새 시드로 갱신**한다. 이후에는 Copy에 따른 LBA 불일치 허용을 적용하지 않고 일반 Write 데이터로 검사한다. 이 규칙은 Data Checker가 해당 호출을 처리할 때 적용하며, `Compare=false`인 호출은 기존 설명대로 추적 상태를 변경하지 않는다.
 
-예약 상태인 원본의 Copy, 연속 Copy와 실제 모드 이름은 추후 확인한다. 이 절은 NVMe Copy 명령에 관한 설명이며 별도의 `MultiCopy Write` 명령을 정의하지 않는다.
+**원본 LBA의 추적 상태가 `비교 안 함`이면 Copy 대상 LBA도 `비교 안 함`으로 처리한다.** 원본에서 알 수 없던 예상 데이터를 Copy만으로 검증 가능한 상태로 만들지 않는다. 이 상태 전파도 Data Checker가 처리하는 Copy 성공에 관한 규칙이며, `Compare=false`일 때는 대상 추적 상태를 변경하지 않는다.
+
+그 밖의 예약 상태인 원본의 Copy, 연속 Copy와 Copy 지원 모드의 정확한 옵션 값은 추후 확인한다. 이 절은 NVMe Copy 명령에 관한 설명이며 별도의 `MultiCopy Write` 명령을 정의하지 않는다.
 
 ### 고정 영역을 이용한 CRC 계산 최적화
 
@@ -292,7 +298,7 @@ NVM Express의 [Sanitize 소개](https://nvmexpress.org/changes-in-nvme-revision
 - Write 패턴의 실제 비트 배분·비트 위치·바이트 순서와 시드 필드 손상 시 분류 규칙
 - 모드별 시드 선택 규칙·유효 범위, 예약값의 정확한 개수·상태 매핑과 nibble 모드의 대응
 - CRC의 정확한 명칭·알고리즘, 테이블 구조·크기와 적용 경로
-- Copy 지원 모드의 이름, 예약 상태 원본·연속 Copy 처리와 Read 검사 범위
+- `--dcMode`의 전체 모드 목록과 Copy 지원 모드의 옵션 값, 비교 안 함 외 예약 상태 원본·연속 Copy 처리와 Read 검사 범위
 - 지원 명령과 예외 명령의 전체 목록
 - 개별 API 옵션의 정확한 표기와 명령별 지원 범위
 - 타임아웃 확정·늦은 완료 및 중첩·동시 실행 명령 처리
