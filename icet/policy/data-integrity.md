@@ -13,6 +13,8 @@ sources:
     description: 2026-09-21 사용자가 설명한 Write 성공 시 시드 갱신과 모든 실패 시 비교 안 함 처리
   - id: user-data-modifying-scope-2026-09-21
     description: 2026-09-21 사용자가 앞선 Write 표현에 Write Uncorrectable과 DSM 등 데이터 관련 상태 변경 동작도 포함한다고 정정
+  - id: user-compare-bypass-2026-09-21
+    description: 2026-09-21 사용자가 설명한 Compare=false의 Data Checker 전체 우회, 추적 상태 유지 및 호출자 책임
 generated: { by: openai-codex, at: "2026-09-21" }
 ---
 
@@ -33,7 +35,18 @@ IceT는 기본적으로 Data Integrity 검사를 활성화한다. 다음 설정�
 
 검사가 활성화되어 있어도 모든 Read의 데이터가 비교되는 것은 아니다. Data Checker가 해당 명령을 지원하고, 대상 LBA에 비교 가능한 예상 상태가 기록되어 있어야 한다. 초기 상태가 `비교 안 함`인 LBA와 일부 예외 명령은 검사 대상에서 제외된다.
 
-옵션의 정확한 API 표기, 명령별 적용 범위와 비활성화 시 내부 상태 갱신 여부는 추가 확인이 필요하다.
+### `Compare=false`: Data Checker 전체 우회
+
+개별 I/O API에서 `Compare=false`로 설정하면 **해당 호출은 Data Checker 로직을 아예 실행하지 않는다.** 단순히 Read 데이터 비교만 생략하는 옵션이 아니다.
+
+- Data Checker의 데이터 비교와 추적 상태 갱신을 모두 수행하지 않는다.
+- 대상 LBA의 기존 시드·특수 상태를 그대로 둔다. 자동으로 `비교 안 함` 상태로 바꾸지도 않는다.
+- 따라서 이 호출에는 아래의 성공 시 상태 갱신·실패 시 `비교 안 함` 처리 규칙도 적용하지 않는다.
+- 데이터 변경 명령이 Device 상태를 바꾸더라도 추적 상태는 이전 상태일 수 있다. 이후 비교를 활성화한 호출에서 사용할 예상 상태의 정합성을 IceT가 자동 복구하지 않는다.
+
+사용자의 “false로 하는 순간 모든 책임은 호출자에게 있다”는 설명을 정책상 다음과 같이 정리한다. **Data Checker를 우회한 호출의 검증과 이후 추적 상태의 정합성은 Test Case 작성자가 책임진다.** 필요한 경우 별도 Data Checker API로 올바른 예상 상태나 `비교 안 함` 상태를 설정해야 한다.
+
+전역 `--disableDataChecking`도 내부 상태를 동일하게 유지하는지는 이번 설명으로 확정하지 않는다. 옵션의 정확한 API 표기와 명령별 지원 범위도 추가 확인이 필요하다.
 
 ## 2. 검출 대상
 
@@ -99,7 +112,7 @@ Data Checker가 자동 추적하는 데이터 변경 명령에 대해서는 **�
 
 이후 해당 LBA에 Write가 성공하면 위 성공 규칙에 따라 새 시드로 갱신되어 비교 가능한 상태가 된다. `비교 안 함`은 데이터 내용의 비교를 생략한다는 뜻이며, 명령 완료 상태의 성공·실패 판정까지 생략한다는 뜻은 아니다.
 
-사용자는 모든 실패 케이스에 이 규칙이 적용된다고 설명했다. 타임아웃을 실패로 확정하는 시점, 늦게 도착한 완료와 동시 실행 명령의 처리 순서는 아직 제공되지 않았다. 이 공통 규칙은 Sanitize의 수동 갱신 예외를 바꾸지 않으며, `Compare=false`일 때의 상태 갱신 방식은 별도 확인이 필요하다.
+사용자는 모든 실패 케이스에 이 규칙이 적용된다고 설명했다. 타임아웃을 실패로 확정하는 시점, 늦게 도착한 완료와 동시 실행 명령의 처리 순서는 아직 제공되지 않았다. 이 공통 규칙은 Sanitize의 수동 갱신 예외를 바꾸지 않는다. `Compare=false`인 호출은 Data Checker 자체를 우회하므로 성공·실패와 관계없이 기존 추적 상태를 변경하지 않는다.
 
 ### Write 데이터 패턴
 
@@ -188,6 +201,8 @@ DSM Trim 범위가 크면 Data Checker가 대상 LBA 각각의 상태를 변경�
 2. 이후 별도 Data Checker API를 사용해 해당 Namespace의 예상 상태를 `0x00 비교` 또는 `비교 안 함`으로 설정한다.
 3. `비교 안 함`을 선택했다면 이후 Read가 데이터 내용의 무결성을 검증하지 않는다는 점을 Test 결과 해석에 반영한다.
 
+`Compare=false`로 수행한 DSM은 기존 추적 상태를 그대로 두므로, 2번의 상태 설정을 자동으로 수행했다고 가정해서는 안 된다. 호출자가 이후 검사에 맞는 상태를 관리한다.
+
 여기서 Namespace는 영역을, NSID는 그 Namespace를 식별하는 값을 뜻한다. “NSID 영역”은 이 문서에서 “해당 Namespace 영역”으로 정리했다.
 
 큰 범위의 판단 기준, 구체적인 API 이름과 상태 갱신 비용은 아직 제공되지 않았다. 별도 API가 즉시 Read를 실행한다는 의미가 아니라, 이후 Read에 사용할 Data Checker의 예상 상태를 설정한다는 설명이다.
@@ -221,6 +236,7 @@ NVM Express의 [Sanitize 소개](https://nvmexpress.org/changes-in-nvme-revision
 ## 7. Test Case 작성 시 확인할 내용
 
 - 해당 I/O에서 비교가 활성화되어 있는가?
+- `Compare=false`로 데이터 변경 명령을 수행했다면 이후 검사에 사용할 추적 상태를 호출자가 정합하게 관리했는가?
 - Read 대상 LBA가 `비교 안 함` 상태인가, 비교 가능한 예상 상태인가?
 - 예상 결과가 정상 데이터인가, Write Uncorrectable에 따른 예상 오류인가?
 - 큰 DSM Trim 또는 Sanitize 후 Data Checker 상태를 필요한 검사 방식에 맞게 설정했는가?
@@ -233,7 +249,7 @@ NVM Express의 [Sanitize 소개](https://nvmexpress.org/changes-in-nvme-revision
 - CRC의 정확한 명칭·알고리즘, 테이블 구조·크기와 적용 경로
 - Copy의 원본·대상 상태 처리
 - 지원 명령과 예외 명령의 전체 목록
-- 옵션의 정확한 API 표기와 비교 비활성화 시 상태 갱신 여부
+- 옵션의 정확한 API 표기·명령별 지원 범위와 전역 `--disableDataChecking`의 추적 상태 처리
 - 타임아웃 확정·늦은 완료 및 중첩·동시 실행 명령 처리
 - Write Uncorrectable Read의 기대 SC/SCT와 혼합 범위 처리
 - 기본 모드와 nibble 모드의 의미·제약 차이
