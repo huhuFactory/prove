@@ -18,4 +18,4 @@ Test Case에서 Device 전원과 Reset을 제어할 때의 IceT 실행 방식을
 
 전원 차단·복구 및 Reset 테스트에서는 **IceT를 종료하지 않고 실행 상태로 유지한 채 Device의 전원을 껐다 켜거나 Device를 Reset한다.** Device 재시작을 IceT 재시작과 동일하게 취급하지 않는다.
 
-이 설명은 IceT 실행 유지에 관한 정책이다. 개별 모듈의 내부 상태까지 모두 유지된다는 의미로 확대하지 않는다. Data Checker의 추적 상태와 중단된 명령 처리는 [Data Integrity 정책](data-integrity.md)의 확인 사항으로 관리한다.
+이 설명은 IceT 실행 유지에 관한 정책이다. 개별 모듈의 내부 상태까지 모두 유지된다는 의미로 확대하지 않는다. Data Checker의 시드 테이블 유지 규칙과 중단된 명령에 관한 확인 사항은 [Data Integrity 정책](data-integrity.md)에서 관리한다.

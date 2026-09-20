@@ -17,6 +17,8 @@ sources:
     description: 2026-09-21 사용자가 설명한 Compare=false의 Data Checker 전체 우회, 추적 상태 유지 및 호출자 책임
   - id: user-checker-startup-exclusion-2026-09-21
     description: 2026-09-21 사용자가 설명한 --disableDataChecking의 시작 시 Data Checker 제외 및 실행 중 활성화 불가
+  - id: user-seed-table-retention-2026-09-21
+    description: 2026-09-21 사용자가 Device Reset·전원 차단 및 복구 후 시드 테이블을 그대로 유지한다고 확인
 generated: { by: openai-codex, at: "2026-09-21" }
 ---
 
@@ -88,6 +90,12 @@ Data Checker를 포함해 IceT를 시작하면 모든 LBA의 Data Checker 상태
 사용자 설명상 이때 Read 명령의 성공·실패는 완료 상태의 SC(Status Code)와 SCT(Status Code Type)로 판단한다. 명령 완료 성공은 데이터 내용의 무결성 검증 완료를 의미하지 않는다.
 
 여기서 초기화는 **Data Checker의 추적 상태 초기화**를 뜻한다. Device 데이터 초기화나 NVMe Reset 명령을 뜻하지 않는다.
+
+### Device Reset·전원 차단 후 시드 테이블
+
+[실행 및 Device 제어 정책](execution-and-device-control.md)처럼 IceT가 계속 실행되는 상태에서는 **Device를 Reset하거나 전원을 껐다 켜도 Data Checker의 시드 테이블을 그대로 유지한다.** Device Reset·전원 차단 자체를 이유로 테이블을 초기화하지 않는다.
+
+이는 개별 데이터 변경 명령의 완료 결과에 따른 상태 갱신 규칙과 별개다. 실패로 처리된 명령의 대상 LBA는 아래 규칙에 따라 `비교 안 함`으로 변경된다. 중단된 명령을 실패로 확정하는 시점과 늦게 도착한 완료의 처리는 아직 설명되지 않았다.
 
 ## 4. 명령별 예상 상태와 Read 검사
 
@@ -259,7 +267,7 @@ NVM Express의 [Sanitize 소개](https://nvmexpress.org/changes-in-nvme-revision
 - 지원 명령과 예외 명령의 전체 목록
 - 개별 API 옵션의 정확한 표기와 명령별 지원 범위
 - 타임아웃 확정·늦은 완료 및 중첩·동시 실행 명령 처리
-- [실행 및 Device 제어 정책](execution-and-device-control.md)에 따른 Reset·전원 차단 시 추적 상태 유지 범위와 중단된 명령 처리
+- Device Reset·전원 차단으로 중단된 명령의 처리
 - Write Uncorrectable Read의 기대 SC/SCT와 혼합 범위 처리
 - 기본 모드와 nibble 모드의 의미·제약 차이
 - DSM·Sanitize 후 사용하는 Data Checker API와 호출 조건
